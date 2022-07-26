@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="main">
+    <div class="post-list">
+        <div class="post flex">
+            <p class="post-text">@Model.post_text</p>
+            <div class="post-info flex">
+                <img src="@Model.img_src" class="post-img"/>
+                <div class="post-stat flex">
+                    <div class="likes">
+                        <p>Likes: @Model.likes</p>
+                    </div>
+                    <div class="comments">
+                        <p>Comments: @Model.comments</p>
+                    </div>
+                    <div class="reposts">
+                        <p>Reposts: @Model.reposts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
