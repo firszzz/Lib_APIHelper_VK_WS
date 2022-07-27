@@ -4,24 +4,53 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="main">
-    <div class="post-list">
-        <div class="post flex">
-            <p class="post-text">@Model.post_text</p>
-            <div class="post-info flex">
-                <img src="@Model.img_src" class="post-img"/>
-                <div class="post-stat flex">
-                    <div class="likes">
-                        <p>Likes: @Model.likes</p>
-                    </div>
-                    <div class="comments">
-                        <p>Comments: @Model.comments</p>
-                    </div>
-                    <div class="reposts">
-                        <p>Reposts: @Model.reposts</p>
-                    </div>
+<div class="main flex">
+    <div class="group_container flex">
+        <div class="group_model flex">
+            <div class="group_perf">
+                <div class="img_container">
+                    <img src="@Model.img_src" width="200"/>
                 </div>
+                <a href="@Model.screen_name" target="_blank">
+                    @Model.name
+                </a>
+            </div>
+            <div class="group_info">
+                <p class="stat_likes">
+                    Количество лайков: @Model.post_likes
+                </p>
+                <p class="stat_members">
+                    Количество участников: @Model.members
+                </p>
+                <p class="stat_posts">
+                    Количество постов: @Model.post_count
+                </p>
             </div>
         </div>
+        @*<div class="group_desc">
+            @foreach (var desc in @Model.desc_arr)
+            {
+                <p>@desc</p>
+            }
+        </div>*@
+        <div class="best_post_container">
+            <h2>Лучший пост:</h2>
+            <div class="best_post">
+                 <div class="best_post_content flex">
+                     <img src="@Model.best_post_img_src" width="300" height="300"/>
+                     <div class="text_info">
+                         <p class="best_post_text">
+                             @Model.post_text
+                        </p>
+                        <p>
+                            @Model.best_post_dt
+                        </p>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="group_stat">
+
     </div>
 </div>

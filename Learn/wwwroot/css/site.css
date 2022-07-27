@@ -19,48 +19,48 @@ body {
 
 main {
     width: 100%;
-}
-
-.post-list {
-    width: 100%;
-}
-
-.post {
     flex-direction: column;
 }
 
-.post-img {
+.group_container {
     width: 100%;
+    justify-content: space-between;
 }
 
-.post-text {
-    width: 40%;
-}
-
-.post-info {
-    width: 40%;
+.group_model {
     flex-direction: column;
+    gap: 1.5rem;
 }
 
-.post-stat {
+.group_model > div > a {
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.group_info {
+    flex-direction: column;
+    padding: 0;
+}
+
+.group_desc {
+    width: 80%;
+    line-height: 1.5;
+}
+
+.best_post { 
     width: 100%;
-    flex-direction: row;
-    justify-content: space-evenly;
+    padding: 1rem;
+    border: 2px solid black;
+    height: max-content;
 }
 
-.post-stat > div {
-    display: flex;
-    vertical-align: central;
-    text-align: center;
+.best_post_container {
+    width: 75%;
 }
 
-.post-stat > div > p {
-    border: 1px solid black;
-    padding: 0.5rem 1.5rem;
-    border-radius: 15%/35%;
+.img_container {
+    border: 2px solid black;
 }
-
-
 
 
 
