@@ -24,6 +24,10 @@ namespace Learn.Pages
         public string members;
         public string best_post_dt;
         public string best_post_img_src;
+        public string best_post_likes_count;
+        public string best_post_reposts_count;
+        public string best_post_comments_count;
+        public string best_post_views_count;
 
         APIHelper apiHelper = new APIHelper(token);
 
@@ -59,6 +63,12 @@ namespace Learn.Pages
                     best_post_img_src = item.photo.sizes[2].url;
                 }
             }
+            Likes bp_likes = best_post[0].likes;
+            Reposts bp_reposts = best_post[0].reposts;
+            Views bp_views = best_post[0].views;
+            best_post_likes_count = bp_likes.count.ToString();
+            best_post_reposts_count = bp_reposts.count.ToString();
+            best_post_views_count = bp_views.count.ToString();
 
             return Page();
         }

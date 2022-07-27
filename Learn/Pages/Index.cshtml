@@ -4,16 +4,19 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="main flex">
+<div class="main_container flex">
     <div class="group_container flex">
         <div class="group_model flex">
             <div class="group_perf">
                 <div class="img_container">
                     <img src="@Model.img_src" width="200"/>
                 </div>
-                <a href="@Model.screen_name" target="_blank">
+                <p style="font-weight: bold">
                     @Model.name
-                </a>
+                    <a href="@Model.screen_name" target="_blank">
+                        (перейти)
+                    </a>
+                </p>
             </div>
             <div class="group_info">
                 <p class="stat_likes">
@@ -27,30 +30,32 @@
                 </p>
             </div>
         </div>
-        @*<div class="group_desc">
-            @foreach (var desc in @Model.desc_arr)
-            {
-                <p>@desc</p>
-            }
-        </div>*@
-        <div class="best_post_container">
-            <h2>Лучший пост:</h2>
+        <div class="best_post_container flex">
+            <h2>Лучший пост (по кол-ву лайков):</h2>
             <div class="best_post">
                  <div class="best_post_content flex">
-                     <img src="@Model.best_post_img_src" width="300" height="300"/>
+                     <img src="@Model.best_post_img_src"/>
                      <div class="text_info">
                          <p class="best_post_text">
                              @Model.post_text
                         </p>
                         <p>
-                            @Model.best_post_dt
+                            Дата публикации: @Model.best_post_dt
                         </p>
+                        <div class="best_post_stat flex">
+                            <p>
+                                Лайков: @Model.best_post_likes_count
+                            </p>
+                            <p>
+                                Репостов: @Model.best_post_reposts_count
+                            </p>
+                            <p>
+                                Просмотров: @Model.best_post_views_count
+                            </p>
+                        </div>
                      </div>
                  </div>
             </div>
         </div>
-    </div>
-    <div class="group_stat">
-
     </div>
 </div>
