@@ -61,6 +61,11 @@ body {
     height: max-content;
 }
 
+
+.best_post_text {
+    word-break: break-all;
+}
+
 .best_post_container {
     width: 75%;
     padding: 0.5rem 1rem 1rem 1rem;
@@ -84,7 +89,7 @@ body {
 }
 
 .best_post_content > img {
-    width: 100%;
+    max-width: 100%;
 }
 
 .best_post_stat {
