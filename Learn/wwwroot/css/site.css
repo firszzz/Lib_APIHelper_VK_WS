@@ -63,7 +63,7 @@ body {
 
 
 .best_post_text {
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .best_post_container {
@@ -89,7 +89,7 @@ body {
 }
 
 .best_post_content > img {
-    max-width: 100%;
+    width: 80%;
 }
 
 .best_post_stat {

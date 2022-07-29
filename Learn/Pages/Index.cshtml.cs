@@ -28,14 +28,14 @@ namespace Learn.Pages
 
         public async Task<IActionResult> OnGetAsync()
         {
-            int[] bp = await apiHelper.get_top_liked(client);
+            int[] bp = await apiHelper.get_top_reposted(client);
             string best_post_id = bp[0].ToString();
             string response_post_count = await apiHelper.get_posts_json(client);
 
             post_likes = (await apiHelper.get_likes_sum(client)).ToString();
 
-            Group_Item[] stats_group = await apiHelper.get_stats(client);
-            Post_Item[] best_post = await apiHelper.get_post(client, best_post_id);
+            List<Group_Item> stats_group = await apiHelper.get_stats(client);
+            List<Post_Item> best_post = await apiHelper.get_post(client, best_post_id);
             Likes bp_likes = best_post[0].likes;
             Reposts bp_reposts = best_post[0].reposts;
             Views bp_views = best_post[0].views;
@@ -51,11 +51,30 @@ namespace Learn.Pages
             post_text = best_post[0].text;
             best_post_dt = UnixTimeStampToDateTime(float.Parse(int_best_post_dt.ToString())).ToString();
 
+            var sizes_bp = new List<int>();
+            int max_size_bp = 0;
+
             foreach (Attachment item in best_post[0].attachments)
             {
                 if (item.type == "photo")
                 {
-                    best_post_img_src = item.photo.sizes[2].url;
+                    foreach (var size in item.photo.sizes)
+                    {
+                        sizes_bp.Add(size.width);
+                    }
+                }
+            }
+
+            int[] sizes_bp_array = new int[sizes_bp.Count];
+            sizes_bp_array = sizes_bp.ToArray();
+            max_size_bp = sizes_bp.Max();
+            int index = Array.FindLastIndex(sizes_bp_array, delegate (int i) { return i == max_size_bp; });
+
+            foreach (Attachment item in best_post[0].attachments)
+            {
+                if (item.type == "photo")
+                {
+                    best_post_img_src = item.photo.sizes[index].url;
                 }
             }
 
